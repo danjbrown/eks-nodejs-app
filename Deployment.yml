@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-nodejs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eks-nodejs-app
+  template:
+    metadata:
+      labels:
+        app: eks-nodejs-app
+    spec:
+      containers:
+      - name: eks-nodejs-app
+        image: public.ecr.aws/u8p8z3z3/eks-nodejs-app:latest
+        ports:
+          - containerPort: 3000
