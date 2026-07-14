@@ -49,6 +49,16 @@ kubectl get servcices
 kubectl get deployments
 ```
 
+## Check pod status
+```
+kubectl describe pod <pod_id> | awk '/Events:/,/^$/'
+```
+
+## Get ECR repository image URI used on pod
+```
+kubectl get pod eks-nodejs-app-5f6b965c5-6257x -o jsonpath='{.spec.containers[*].image}'
+```
+
 ## Create a Service with the type of Load Balancer to expose the application port to the outside world
 ```
 kubectl expose deployment eks-nodejs-app --port=80 --target-port=3000 --type=LoadBalancer
