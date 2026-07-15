@@ -15,5 +15,6 @@ spec:
       containers:
       - name: eks-nodejs-app
         image: public.ecr.aws/u8p8z3z3/eks-nodejs-app:latest
+        imagePullPolicy: Always
         ports:
           - containerPort: 3000

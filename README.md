@@ -54,7 +54,7 @@ eksctl create cluster --name eks-nodejs-app --region us-east-1
 aws eks update-kubeconfig --name eks-nodejs-app --region us-east-1
 ```
 
-## Apply the Kubernetes config
+## Apply the Kubernetes deployment config
 ```
 cd k8s/
 kubectl apply -f deploy.yml
@@ -72,6 +72,11 @@ kubectl expose deployment eks-nodejs-app --port=80 --target-port=3000 --type=Loa
 ## It may take some minutes for the load balancer to be applied. Find the LoadBalancer EXTERNAL-IP using the below command and to load the app in a browser
 ```
 kubectl get services
+```
+
+## Update the pods after a new docker image has been pushed with the same tag
+```
+kubectl rollout restart deployment eks-nodejs-app
 ```
 
 ## Check the Kubernetes pods, service and deployments
