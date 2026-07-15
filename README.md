@@ -1,5 +1,5 @@
 # eks-nodejs-app
-Create and deploy a basic Node.js application on AWS EKS using Kubernetes.
+Create and deploy a basic Node.js application on AWS EKS.
 
 ## Build the application
 ```
@@ -20,7 +20,7 @@ docker run -p 3000:3000 eks-nodejs-app
 aws ecr-public create-repository --repository-name eks-nodejs-app --region us-east-1
 ```
 
-This should output the repository URI:
+This should output the repository URI which needs to be added in /k8s/deploy.yml
 
 ```
 {
@@ -69,7 +69,7 @@ kubectl apply -f load-balancer.yml
 kubectl expose deployment eks-nodejs-app --port=80 --target-port=3000 --type=LoadBalancer
 ```
 
-## It may take some minutes for the load balancer to be applied. Find the LoadBalancer EXTERNAL-IP using the below command and to load the app in a browser
+## It may take some minutes for the load balancer to be applied. Find the LoadBalancer EXTERNAL-IP using the below command and load the app in a browser
 ```
 kubectl get services
 ```
